@@ -5,10 +5,14 @@ export function WeatherCard({temp, description, imageUrl, city}:
         return (
             <IonCard className="ion-margin-top">
                 <IonCardHeader>
-                    <IonCardTitle className="ion-text-capitalize">{city}</IonCardTitle>
+                    <IonCardTitle className="ion-text-capitalize ion-text-center">
+                            {city}
+                    </IonCardTitle>
                 </IonCardHeader>
-                <p>{imageUrl}</p>
-                <IonCardContent>
+                <div>
+                    <p>{imageUrl}</p>
+                </div>
+                <IonCardContent className="ion-text-center">
                     <p>{description}</p>
                     <p>{temp}</p>
                 </IonCardContent>
