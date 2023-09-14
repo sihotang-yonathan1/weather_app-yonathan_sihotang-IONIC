@@ -9,8 +9,8 @@ export function WeatherCard({temp, description, imageUrl, city}:
                 </IonCardHeader>
                 <p>{imageUrl}</p>
                 <IonCardContent>
-                    <p>Suhu: {temp}</p>
                     <p>{description}</p>
+                    <p>{temp}</p>
                 </IonCardContent>
             </IonCard>
         )
