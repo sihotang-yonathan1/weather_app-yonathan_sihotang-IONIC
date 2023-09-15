@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { WeatherCard } from "./WeatherCard"
+import { WeatherCard, WeatherCardError } from "./WeatherCard"
 import { AppConfig } from "../SettingContext"
 
 // TODO: set api as secret
@@ -107,14 +107,23 @@ export default function HomeContentContainer({city, setting}: {city: string | nu
     return (
         <div>
             {/* Dummy Data */}
-            <WeatherCard 
-                temp={weatherApiInfo?.temp} 
-                imageUrl={weatherApiInfo?.weather?.icon}
-                description={weatherApiInfo?.weather?.description} 
-                city={weatherApiInfo?.city} 
-                units={setting.metric}
-                name={weatherApiInfo?.weather?.main}
-            />
+            { weatherApiInfo?.city &&
+                <WeatherCard 
+                    temp={weatherApiInfo?.temp} 
+                    imageUrl={weatherApiInfo?.weather?.icon}
+                    description={weatherApiInfo?.weather?.description} 
+                    city={weatherApiInfo?.city} 
+                    units={setting.metric}
+                    name={weatherApiInfo?.weather?.main}
+                />
+            }
+            {
+                weatherApiInfo?.city === undefined
+                && <WeatherCardError 
+                        message="Nama tempat tidak ditemukan"
+                    />
+                    
+            }
         </div>
     )
 }

@@ -57,7 +57,7 @@ const Home: React.FC = () => {
         <IonSearchbar 
             placeholder="Cari kota disini" 
             onIonInput={
-              e => setSelectedCity(e?.target?.value || "manado")
+              e => setSelectedCity(e?.target?.value ?? null)
             }
             debounce={500}
             color="medium"
