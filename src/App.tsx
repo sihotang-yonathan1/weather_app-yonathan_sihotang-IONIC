@@ -36,8 +36,8 @@ const App: React.FC = () => {
     'metric': string
   }>({
     'apiKey': 'd0803559f03dafe4ee9b2515f4dc8c21',
-    'language': 'en',
-    'metric': 'standard'
+    'language': 'id',
+    'metric': 'metric'
   })
 
   return (
