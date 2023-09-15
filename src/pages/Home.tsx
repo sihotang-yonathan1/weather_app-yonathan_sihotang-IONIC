@@ -54,7 +54,13 @@ const Home: React.FC = () => {
       <IonContent fullscreen className="ion-padding">
         
         {/* Search Bar */}
-        <IonSearchbar placeholder="Cari kota disini" onIonInput={e => setSelectedCity(e?.target?.value || "manado")}/>
+        <IonSearchbar 
+            placeholder="Cari kota disini" 
+            onIonInput={
+              e => setSelectedCity(e?.target?.value || "manado")
+            }
+            debounce={500}
+          />
         
         <HomeContentContainer city={selectedCity} setting={setting}/>
       </IonContent>
