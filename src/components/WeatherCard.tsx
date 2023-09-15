@@ -25,7 +25,7 @@ export function WeatherCard({temp, description, imageUrl, city, units}:
                 </IonCardHeader>
                 <IonRow className="ion-justify-content-center">
                     { imageUrl && <IonImg
-                        src={`https://openweathermap.org/img/wn/${imageUrl}/@2x.png`}
+                        src={`https://openweathermap.org/img/wn/${imageUrl}@2x.png`}
                     />}
                 </IonRow>
                 <IonCardContent className="ion-text-center">
