@@ -21,7 +21,7 @@ export function WeatherCard({temp, description, imageUrl, city, units, name}:
         name: string | null,
     }){
         return (
-            <IonCard className="ion-margin-top">
+            <IonCard className="ion-margin-top" color="light">
                 <IonCardHeader>
                     <IonCardTitle className="ion-text-capitalize ion-text-center">
                             {city}
