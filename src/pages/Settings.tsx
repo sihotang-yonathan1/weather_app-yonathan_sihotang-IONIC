@@ -30,6 +30,7 @@ const Settings: React.FC = () => {
               })
             }}
             value={setting?.apiKey}
+            required={true}
         />
         <IonSelect label="Language" className="ion-margin-top ion-margin-bottom" value={setting?.language} onIonChange={e => setSettings({
           ...setting,
