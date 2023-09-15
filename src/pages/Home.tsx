@@ -43,11 +43,6 @@ const Home: React.FC = () => {
         {/* Search Bar */}
         <IonSearchbar placeholder="Cari kota disini"/>
         
-        {/* City Selection */}
-        {/* TODO: set the option automatic based on available city */}
-        <IonSelect label="Kota" value="manado">
-          <IonSelectOption value="manado" className="ion-text-capitalize">Manado</IonSelectOption>
-        </IonSelect>
         <HomeContentContainer />
       </IonContent>
     </IonPage>
