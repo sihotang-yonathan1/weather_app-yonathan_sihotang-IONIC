@@ -1,7 +1,12 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCardTitle } from "@ionic/react";
+import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonImg, IonItem, IonRow } from "@ionic/react";
 
 export function WeatherCard({temp, description, imageUrl, city}: 
-    {temp: number, description: string, imageUrl: string, city: string}){
+    {
+        temp: number | null, 
+        description: string | null, 
+        imageUrl: string, 
+        city: string | null
+    }){
         return (
             <IonCard className="ion-margin-top">
                 <IonCardHeader>
@@ -9,9 +14,11 @@ export function WeatherCard({temp, description, imageUrl, city}:
                             {city}
                     </IonCardTitle>
                 </IonCardHeader>
-                <div>
-                    <p>{imageUrl}</p>
-                </div>
+                <IonRow className="ion-justify-content-center">
+                    <IonImg
+                        src={imageUrl}
+                    />
+                </IonRow>
                 <IonCardContent className="ion-text-center">
                     <p>{description}</p>
                     <p>{temp}</p>

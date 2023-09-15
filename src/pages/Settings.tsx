@@ -20,7 +20,8 @@ const Settings: React.FC = () => {
             disabled={true}
             className="ion-margin-bottom"
         />
-        <IonSelect label="Language" className="ion-margin-top ion-margin-bottom" value="id">
+        <IonSelect label="Language" className="ion-margin-top ion-margin-bottom" value="en">
+            <IonSelectOption value="en">en</IonSelectOption>
             <IonSelectOption value="id">id</IonSelectOption>
         </IonSelect>
 
