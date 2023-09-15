@@ -93,7 +93,7 @@ export default function HomeContentContainer({city, setting}: {city: string | nu
             {/* Dummy Data */}
             <WeatherCard 
                 temp={weatherApiInfo?.temp} 
-                imageUrl={`https://openweathermap.org/img/wn/${weatherApiInfo?.weather?.icon}@2x.png`} 
+                imageUrl={weatherApiInfo?.weather?.icon}
                 description={weatherApiInfo?.weather?.description} 
                 city={weatherApiInfo?.city} 
                 units={setting.metric}

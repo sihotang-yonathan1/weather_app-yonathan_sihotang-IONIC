@@ -12,7 +12,7 @@ export function WeatherCard({temp, description, imageUrl, city, units}:
     {
         temp: number | null, 
         description: string | null, 
-        imageUrl: string, 
+        imageUrl: string | null, 
         city: string | null,
         units: string
     }){
@@ -24,9 +24,9 @@ export function WeatherCard({temp, description, imageUrl, city, units}:
                     </IonCardTitle>
                 </IonCardHeader>
                 <IonRow className="ion-justify-content-center">
-                    <IonImg
-                        src={imageUrl}
-                    />
+                    { imageUrl && <IonImg
+                        src={`https://openweathermap.org/img/wn/${imageUrl}/@2x.png`}
+                    />}
                 </IonRow>
                 <IonCardContent className="ion-text-center">
                     <p>{description}</p>
