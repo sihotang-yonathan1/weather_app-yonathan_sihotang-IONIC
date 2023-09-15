@@ -1,6 +1,10 @@
-import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonInput, IonPage, IonRow, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonPage, IonRow, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
+import { useContext, useEffect } from 'react';
+import { AppConfig } from '../SettingContext';
 
 const Settings: React.FC = () => {
+  const {setting, setSettings} = useContext(AppConfig)
+  
   return (
     <IonPage>
       <IonHeader>
@@ -17,26 +21,35 @@ const Settings: React.FC = () => {
             label="API KEY" 
             labelPlacement="stacked"
             fill="outline"
-            disabled={true}
+            // disabled={true}
             className="ion-margin-bottom"
+            onIonChange={e => {
+              setSettings({
+                ...setting,
+                'apiKey': e.target.value
+              })
+            }}
+            value={setting?.apiKey}
         />
-        <IonSelect label="Language" className="ion-margin-top ion-margin-bottom" value="en">
+        <IonSelect label="Language" className="ion-margin-top ion-margin-bottom" value={setting?.language} onIonChange={e => setSettings({
+          ...setting,
+          'language': e.target.value
+        })}>
             <IonSelectOption value="en">en</IonSelectOption>
             <IonSelectOption value="id">id</IonSelectOption>
         </IonSelect>
 
         {/* ref: https://openweathermap.org/weather-data#with_units */}
-        <IonSelect label="Metric" className="ion-margin-top ion-margin-bottom" value="standard">
+        <IonSelect label="Metric" className="ion-margin-top ion-margin-bottom" value={setting?.metric} onIonChange={
+          e => setSettings({
+            ...setting,
+            'metric': e.target.value
+          })
+        }>
             <IonSelectOption value="standard">Standard</IonSelectOption>
             <IonSelectOption value="metric">Metric</IonSelectOption>
             <IonSelectOption value="imperial">Imperial</IonSelectOption>
         </IonSelect>
-
-        <IonRow className="ion-justify-content-center">
-            <IonButton className="ion-justify-content-center">
-                <p>Save</p>
-            </IonButton>
-        </IonRow>
       </IonContent>
     </IonPage>
   );

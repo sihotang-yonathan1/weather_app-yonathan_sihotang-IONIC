@@ -1,4 +1,4 @@
-import { contrastOutline, settingsOutline } from "ionicons/icons";
+import { contrastOutline, settings, settingsOutline } from "ionicons/icons";
 import {
   IonButton,
   IonButtons,
@@ -15,14 +15,20 @@ import {
 } from '@ionic/react';
 import './Home.css';
 import HomeContentContainer from "../components/HomeContentContainer";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AppConfig } from "../SettingContext";
 
 const Home: React.FC = () => {
   const [selectedCity, setSelectedCity] = useState<string | null>('manado')
-
+  const {setting} = useContext(AppConfig)
+  
   useEffect( () => {
     console.log(selectedCity)
   }, [selectedCity])
+
+  useEffect(() => {
+    console.log(setting)
+  }, [setting])
 
   return (
     <IonPage>
@@ -50,7 +56,7 @@ const Home: React.FC = () => {
         {/* Search Bar */}
         <IonSearchbar placeholder="Cari kota disini" onIonInput={e => setSelectedCity(e?.target?.value || "manado")}/>
         
-        <HomeContentContainer city={selectedCity}/>
+        <HomeContentContainer city={selectedCity} setting={setting}/>
       </IonContent>
     </IonPage>
   );

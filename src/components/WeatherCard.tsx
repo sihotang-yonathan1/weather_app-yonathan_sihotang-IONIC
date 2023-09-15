@@ -1,11 +1,20 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonImg, IonItem, IonRow } from "@ionic/react";
+import { 
+    IonCard, 
+    IonCardContent, 
+    IonCardHeader, 
+    IonCardTitle, 
+    IonImg, 
+    IonItem, 
+    IonRow 
+} from "@ionic/react";
 
-export function WeatherCard({temp, description, imageUrl, city}: 
+export function WeatherCard({temp, description, imageUrl, city, units}: 
     {
         temp: number | null, 
         description: string | null, 
         imageUrl: string, 
-        city: string | null
+        city: string | null,
+        units: string
     }){
         return (
             <IonCard className="ion-margin-top">

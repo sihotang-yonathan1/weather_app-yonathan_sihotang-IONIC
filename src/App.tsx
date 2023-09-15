@@ -22,30 +22,48 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { createContext, useState } from 'react';
+import { AppConfig } from './SettingContext';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        {/* Home */}
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        
-        {/* Home redirect */}
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
 
-        {/* Settings */}
-        <Route exact path="/settings">
-          <Settings />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+
+const App: React.FC = () => {
+  const [settings, setSettings] = useState<{
+    'apiKey': string,
+    'language': string,
+    'metric': string
+  }>({
+    'apiKey': 'd0803559f03dafe4ee9b2515f4dc8c21',
+    'language': 'en',
+    'metric': 'standard'
+  })
+
+  return (
+    <AppConfig.Provider value={{setting: settings, setSettings: setSettings}}>
+      <IonApp>
+        <IonReactRouter>
+          <IonRouterOutlet>
+            {/* Home */}
+            <Route exact path="/home">
+              <Home />
+            </Route>
+            
+            {/* Home redirect */}
+            <Route exact path="/">
+              <Redirect to="/home" />
+            </Route>
+
+            {/* Settings */}
+            <Route exact path="/settings">
+              <Settings />
+            </Route>
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </IonApp>
+    </AppConfig.Provider>
+  )
+};
 
 export default App;
