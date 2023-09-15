@@ -33,14 +33,14 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="primary">
           {/* Setting page */}
-          <IonButton slot="start" routerLink="/settings">
-            <IonIcon icon={settingsOutline}/>
+          <IonButton slot="start" routerLink="/settings" color="secondary">
+            <IonIcon icon={settingsOutline} color="dark"/>
           </IonButton>
           
           {/* Header title */}
-          <IonItem>
+          <IonItem color="primary">
             <IonTitle className="ion-text-center ion-text-capitalize">Weather App</IonTitle>
           </IonItem>
 
@@ -51,7 +51,7 @@ const Home: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen className="ion-padding">
+      <IonContent fullscreen className="ion-padding" color="secondary">
         
         {/* Search Bar */}
         <IonSearchbar 
