@@ -1,5 +1,18 @@
 import { contrastOutline, settingsOutline } from "ionicons/icons";
-import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonPage, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
+import {
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonIcon,
+  IonItem,
+  IonPage,
+  IonSearchbar,
+  IonSelect,
+  IonSelectOption,
+  IonTitle,
+  IonToolbar
+} from '@ionic/react';
 import './Home.css';
 import HomeContentContainer from "../components/HomeContentContainer";
 
@@ -35,7 +48,6 @@ const Home: React.FC = () => {
         <IonSelect label="Kota" value="manado">
           <IonSelectOption value="manado" className="ion-text-capitalize">Manado</IonSelectOption>
         </IonSelect>
-
         <HomeContentContainer />
       </IonContent>
     </IonPage>
