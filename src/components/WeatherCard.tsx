@@ -5,18 +5,20 @@ import {
     IonCardTitle, 
     IonImg, 
     IonItem, 
-    IonRow 
+    IonRow, 
+    IonText
 } from "@ionic/react";
 
 import "./WeatherCard.css";
 
-export function WeatherCard({temp, description, imageUrl, city, units}: 
+export function WeatherCard({temp, description, imageUrl, city, units, name}: 
     {
         temp: number | null, 
         description: string | null, 
         imageUrl: string | null, 
         city: string | null,
-        units: string
+        units: string,
+        name: string | null,
     }){
         return (
             <IonCard className="ion-margin-top">
@@ -32,8 +34,21 @@ export function WeatherCard({temp, description, imageUrl, city, units}:
                     />}
                 </IonRow>
                 <IonCardContent className="ion-text-center">
-                    <p>{description}</p>
-                    <p>{temp}</p>
+                    <IonText>
+                        <h1>{name}</h1>
+                    </IonText>
+                    <IonText>
+                        <h3 className="ion-text-capitalize">{description}</h3>
+                    </IonText>
+                    <IonText>
+                        <p>{temp} {
+                            units === "standard" 
+                            ? "K" 
+                            : units === "metric"
+                                ? "C"
+                                : "F"
+                        }</p>
+                    </IonText>
                 </IonCardContent>
             </IonCard>
         )

@@ -97,6 +97,7 @@ export default function HomeContentContainer({city, setting}: {city: string | nu
                 description={weatherApiInfo?.weather?.description} 
                 city={weatherApiInfo?.city} 
                 units={setting.metric}
+                name={weatherApiInfo?.weather?.main}
             />
         </div>
     )
