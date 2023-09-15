@@ -21,7 +21,7 @@ async function getCityPosition({city, setting}: {city: string | null, setting: S
         const json_response = await response.json()
         return json_response
     }
-    return null;
+    return [];
 }
 
 async function getCurrentWeather({latitude, longitude, setting}: 
