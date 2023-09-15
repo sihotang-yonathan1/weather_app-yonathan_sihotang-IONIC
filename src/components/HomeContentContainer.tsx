@@ -63,26 +63,42 @@ export default function HomeContentContainer({city, setting}: {city: string | nu
         }
     })
 
+    async function dataFetching({city}: {city: string | null}){
+        const city_location = await getCityPosition({city: city, setting: setting})
+        const weather_info_data = await getCurrentWeather({
+            latitude: city_location?.[0]?.lat,
+            longitude: city_location?.[0]?.lon,
+            setting: setting
+        })
+        return {
+            'city': city_location?.[0]?.name,
+            'latitude': city_location?.[0]?.lat,
+            'longitude': city_location?.[0]?.lon,
+            'temp': weather_info_data?.main?.temp,
+            'weather': weather_info_data?.weather?.[0]
+        }
+    }
+
     useEffect(() => {
         console.log(`city selected: ${city}`)
-        const dataFetching = async () =>{
-            const city_location = await getCityPosition({city: city, setting: setting})
-            const weather_info_data = await getCurrentWeather({
-                latitude: city_location?.[0]?.lat,
-                longitude: city_location?.[0]?.lon,
-                setting: setting
-            })
-            
-            setWeatherApiInfo({
-                'city': city_location?.[0]?.name,
-                'latitude': city_location?.[0]?.lat,
-                'longitude': city_location?.[0]?.lon,
-                'temp': weather_info_data?.main?.temp,
-                'weather': weather_info_data?.weather?.[0]
-            })
-        }
-        dataFetching()
+        dataFetching({city: city})
+        .then(res => {
+            setWeatherApiInfo(res)
+        })
     }, [city, setting])
+
+    useEffect(() => {
+        // call every 5 minute
+        let data_fetch_interval = setInterval(
+            () => {
+                console.info("start to re-fetch data")
+                dataFetching({city: weatherApiInfo?.city})
+                    .then(res =>setWeatherApiInfo(res))
+            },
+        300000
+        )
+        return () => clearInterval(data_fetch_interval)
+    })
 
     useEffect(() => {
         console.log(weatherApiInfo)
