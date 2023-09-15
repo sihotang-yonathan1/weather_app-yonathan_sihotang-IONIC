@@ -33,9 +33,11 @@ const Settings: React.FC = () => {
             required={true}
         />
         <IonSelect label="Language" className="ion-margin-top ion-margin-bottom" value={setting?.language} onIonChange={e => setSettings({
-          ...setting,
-          'language': e.target.value
-        })}>
+            ...setting,
+            'language': e.target.value
+          })}
+          fill="solid"
+        >
             <IonSelectOption value="en">en</IonSelectOption>
             <IonSelectOption value="id">id</IonSelectOption>
         </IonSelect>
@@ -46,7 +48,9 @@ const Settings: React.FC = () => {
             ...setting,
             'metric': e.target.value
           })
-        }>
+        }
+          fill="solid"
+        >
             <IonSelectOption value="standard">Standard</IonSelectOption>
             <IonSelectOption value="metric">Metric</IonSelectOption>
             <IonSelectOption value="imperial">Imperial</IonSelectOption>
