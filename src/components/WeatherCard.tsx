@@ -8,6 +8,8 @@ import {
     IonRow 
 } from "@ionic/react";
 
+import "./WeatherCard.css";
+
 export function WeatherCard({temp, description, imageUrl, city, units}: 
     {
         temp: number | null, 
@@ -26,6 +28,7 @@ export function WeatherCard({temp, description, imageUrl, city, units}:
                 <IonRow className="ion-justify-content-center">
                     { imageUrl && <IonImg
                         src={`https://openweathermap.org/img/wn/${imageUrl}@2x.png`}
+                        className="image_container"
                     />}
                 </IonRow>
                 <IonCardContent className="ion-text-center">
