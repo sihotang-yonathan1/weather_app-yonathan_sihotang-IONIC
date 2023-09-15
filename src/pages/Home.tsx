@@ -60,6 +60,7 @@ const Home: React.FC = () => {
               e => setSelectedCity(e?.target?.value || "manado")
             }
             debounce={500}
+            color="medium"
           />
         
         <HomeContentContainer city={selectedCity} setting={setting}/>
