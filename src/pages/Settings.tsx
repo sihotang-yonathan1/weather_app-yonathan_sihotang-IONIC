@@ -20,12 +20,12 @@ const Settings: React.FC = () => {
             disabled={true}
             className="ion-margin-bottom"
         />
-        <IonSelect label="Language" className="ion-margin-top ion-margin-bottom">
+        <IonSelect label="Language" className="ion-margin-top ion-margin-bottom" value="id">
             <IonSelectOption value="id">id</IonSelectOption>
         </IonSelect>
 
         {/* ref: https://openweathermap.org/weather-data#with_units */}
-        <IonSelect label="Metric" className="ion-margin-top ion-margin-bottom">
+        <IonSelect label="Metric" className="ion-margin-top ion-margin-bottom" value="standard">
             <IonSelectOption value="standard">Standard</IonSelectOption>
             <IonSelectOption value="metric">Metric</IonSelectOption>
             <IonSelectOption value="imperial">Imperial</IonSelectOption>
