@@ -21,7 +21,7 @@ type SettingType = {
 // TODO: de-coupling this function from UI file
 async function getCityPosition({city, setting}: {city: string | null, setting: SettingType}){
     // retrieve data from Geocoder API
-    if (city !== null){
+    if (city !== null && city !== undefined){
         let response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${setting?.apiKey}`) || []
         const json_response = await response.json()
         return json_response
