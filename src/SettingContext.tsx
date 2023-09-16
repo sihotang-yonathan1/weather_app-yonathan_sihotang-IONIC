@@ -6,7 +6,8 @@ export const AppConfig = createContext({
         'language': 'en',
         'metric': 'standard',
         'user': {
-            'auto_refetch': true
+            'auto_refetch': true,
+            'fetch_interval': 300000
         }
     },
     'setSettings': (e: any) => {}

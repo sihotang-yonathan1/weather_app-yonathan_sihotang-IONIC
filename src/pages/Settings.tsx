@@ -145,8 +145,25 @@ const Settings: React.FC = () => {
                       })}
                     >Auto-refetch</IonToggle>
                   </IonItem>
+                  
+                  <IonItem>
+                    <IonInput
+                      type="number"
+                      label="Fetch Interval"
+                      disabled={setting?.user?.auto_refetch === false}
+                      onIonChange={e => setSettings({
+                        ...setting,
+                        'user': {
+                          'auto_refetch': setting?.user?.auto_refetch,
+                          'fetch_interval': e.target.value ?? 300000
+                        }
+                      })}
+                      value={setting?.user?.fetch_interval} // in ms
+                    />
+                  </IonItem>
               </IonCol>
           </IonRow>
+
         </IonGrid>
       </IonContent>
     </IonPage>

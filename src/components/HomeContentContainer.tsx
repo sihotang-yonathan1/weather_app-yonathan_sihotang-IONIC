@@ -12,7 +12,8 @@ type SettingType = {
     'apiKey': string,
     'metric': string,
     'user': {
-        'auto_refetch': boolean
+        'auto_refetch': boolean,
+        'fetch_interval': number
     }
 }
 
@@ -103,7 +104,7 @@ export default function HomeContentContainer({city, setting}: {city: string | nu
                     dataFetching({city: weatherApiInfo?.city})
                         .then(res =>setWeatherApiInfo(res))
                 },
-            300000
+            setting?.user?.fetch_interval ?? 300000
             )
             return () => clearInterval(data_fetch_interval)
         }

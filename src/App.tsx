@@ -37,14 +37,16 @@ const App: React.FC = () => {
     'language': string,
     'metric': string,
     'user': {
-      'auto_refetch': boolean
+      'auto_refetch': boolean,
+      'fetch_interval': number
     }
   }>({
     'apiKey': 'd0803559f03dafe4ee9b2515f4dc8c21',
     'language': 'id',
     'metric': 'metric',
     'user': {
-      'auto_refetch': true
+      'auto_refetch': true,
+      'fetch_interval': 300000
     }
   })
 
