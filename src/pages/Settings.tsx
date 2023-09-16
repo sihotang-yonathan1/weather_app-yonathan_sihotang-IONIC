@@ -159,6 +159,7 @@ const Settings: React.FC = () => {
                         }
                       })}
                       value={setting?.user?.fetch_interval} // in ms
+                      className='ion-text-end'
                     />
                   </IonItem>
               </IonCol>
