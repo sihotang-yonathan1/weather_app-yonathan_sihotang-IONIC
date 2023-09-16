@@ -10,7 +10,10 @@ const apiInfo = {
 type SettingType = {
     'language': string,
     'apiKey': string,
-    'metric': string
+    'metric': string,
+    'user': {
+        'auto_refetch': boolean
+    }
 }
 
 // TODO: de-coupling this function from UI file
@@ -88,7 +91,10 @@ export default function HomeContentContainer({city, setting}: {city: string | nu
     }, [city, setting])
 
     useEffect(() => {
-        if (weatherApiInfo?.city !== undefined || weatherApiInfo?.city !== null){
+        if (
+            (weatherApiInfo?.city !== undefined 
+                || weatherApiInfo?.city !== null
+            ) && setting?.user?.auto_refetch){
 
             // call every 5 minute
             let data_fetch_interval = setInterval(

@@ -9,12 +9,14 @@ import {
   IonIcon, 
   IonInput, 
   IonItem, 
+  IonList, 
   IonPage, 
   IonRow, 
   IonSelect, 
   IonSelectOption, 
   IonText, 
   IonTitle, 
+  IonToggle, 
   IonToolbar 
 } from '@ionic/react';
 import { useContext, useEffect, useState } from 'react';
@@ -99,33 +101,52 @@ const Settings: React.FC = () => {
                 </IonToolbar>
             </IonCol>
           </IonRow>
-        <IonRow>
-          <IonSelect label="Language" className="ion-margin-top ion-margin-bottom" value={setting?.language} onIonChange={e => setSettings({
-              ...setting,
-              'language': e.target.value
-            })}
-            fill="solid"
-          >
-              <IonSelectOption value="en">en</IonSelectOption>
-              <IonSelectOption value="id">id</IonSelectOption>
-          </IonSelect>
-        </IonRow>
+          
+          <IonRow>
+            <IonSelect label="Language" className="ion-margin-top ion-margin-bottom" value={setting?.language} onIonChange={e => setSettings({
+                ...setting,
+                'language': e.target.value
+              })}
+              fill="solid"
+            >
+                <IonSelectOption value="en">en</IonSelectOption>
+                <IonSelectOption value="id">id</IonSelectOption>
+            </IonSelect>
+          </IonRow>
 
-        <IonRow>
-          {/* ref: https://openweathermap.org/weather-data#with_units */}
-          <IonSelect label="Metric" className="ion-margin-top ion-margin-bottom" value={setting?.metric} onIonChange={
-            e => setSettings({
-              ...setting,
-              'metric': e.target.value
-            })
-          }
-            fill="solid"
-          >
-              <IonSelectOption value="standard">Standard</IonSelectOption>
-              <IonSelectOption value="metric">Metric</IonSelectOption>
-              <IonSelectOption value="imperial">Imperial</IonSelectOption>
-          </IonSelect>
-        </IonRow>
+          <IonRow>
+            {/* ref: https://openweathermap.org/weather-data#with_units */}
+            <IonSelect label="Metric" className="ion-margin-top ion-margin-bottom" value={setting?.metric} onIonChange={
+              e => setSettings({
+                ...setting,
+                'metric': e.target.value
+              })
+            }
+              fill="solid"
+            >
+                <IonSelectOption value="standard">Standard</IonSelectOption>
+                <IonSelectOption value="metric">Metric</IonSelectOption>
+                <IonSelectOption value="imperial">Imperial</IonSelectOption>
+            </IonSelect>
+          </IonRow>
+          
+          <IonRow>
+              <IonCol>
+                  <IonItem>
+                    <IonToggle 
+                      justify="space-between" 
+                      labelPlacement="start"
+                      checked={setting?.user?.auto_refetch}
+                      onIonChange={e => setSettings({
+                        ...setting,
+                        'user': {
+                          'auto_refetch': e.target.checked
+                        }
+                      })}
+                    >Auto-refetch</IonToggle>
+                  </IonItem>
+              </IonCol>
+          </IonRow>
         </IonGrid>
       </IonContent>
     </IonPage>

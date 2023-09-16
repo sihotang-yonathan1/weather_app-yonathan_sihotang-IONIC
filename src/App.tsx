@@ -35,11 +35,17 @@ const App: React.FC = () => {
   const [settings, setSettings] = useState<{
     'apiKey': string,
     'language': string,
-    'metric': string
+    'metric': string,
+    'user': {
+      'auto_refetch': boolean
+    }
   }>({
     'apiKey': 'd0803559f03dafe4ee9b2515f4dc8c21',
     'language': 'id',
-    'metric': 'metric'
+    'metric': 'metric',
+    'user': {
+      'auto_refetch': true
+    }
   })
 
   return (
