@@ -1,4 +1,4 @@
-import { contrastOutline, settings, settingsOutline } from "ionicons/icons";
+import { contrastOutline, settings, settingsOutline, information } from "ionicons/icons";
 import {
   IonButton,
   IonButtons,
@@ -40,13 +40,12 @@ const Home: React.FC = () => {
           </IonButton>
           
           {/* Header title */}
-          <IonItem color="primary">
-            <IonTitle className="ion-text-center ion-text-capitalize">Weather App</IonTitle>
-          </IonItem>
+          
+          <IonTitle className="ion-text-center ion-text-capitalize">Weather App</IonTitle>
 
           {/* Dark Mode Buttom */}
-          <IonButton slot="end">
-            <IonIcon icon={contrastOutline}/>
+          <IonButton slot="end" color="secondary">
+            <IonIcon icon={information}/>
           </IonButton>
         </IonToolbar>
       </IonHeader>
