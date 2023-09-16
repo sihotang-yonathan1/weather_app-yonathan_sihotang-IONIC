@@ -56,7 +56,7 @@ const Settings: React.FC = () => {
                   }}
                   value={setting?.apiKey}
                   required={true}
-                  disabled={!isApiKeyEditMode}
+                  readonly={!isApiKeyEditMode}
               />
               { isApiKeyEditMode &&
                 <IonItem color="warning">
