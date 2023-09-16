@@ -88,16 +88,19 @@ export default function HomeContentContainer({city, setting}: {city: string | nu
     }, [city, setting])
 
     useEffect(() => {
-        // call every 5 minute
-        let data_fetch_interval = setInterval(
-            () => {
-                console.info("start to re-fetch data")
-                dataFetching({city: weatherApiInfo?.city})
-                    .then(res =>setWeatherApiInfo(res))
-            },
-        300000
-        )
-        return () => clearInterval(data_fetch_interval)
+        if (weatherApiInfo?.city !== undefined || weatherApiInfo?.city !== null){
+
+            // call every 5 minute
+            let data_fetch_interval = setInterval(
+                () => {
+                    console.info("start to re-fetch data")
+                    dataFetching({city: weatherApiInfo?.city})
+                        .then(res =>setWeatherApiInfo(res))
+                },
+            300000
+            )
+            return () => clearInterval(data_fetch_interval)
+        }
     })
 
     useEffect(() => {
