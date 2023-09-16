@@ -43,7 +43,7 @@ const Home: React.FC = () => {
           
           <IonTitle className="ion-text-center ion-text-capitalize">Weather App</IonTitle>
 
-          {/* Dark Mode Buttom */}
+          {/* information / About button */}
           <IonButton slot="end" color="secondary">
             <IonIcon icon={information}/>
           </IonButton>
