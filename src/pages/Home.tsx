@@ -44,7 +44,7 @@ const Home: React.FC = () => {
           <IonTitle className="ion-text-center ion-text-capitalize">Weather App</IonTitle>
 
           {/* information / About button */}
-          <IonButton slot="end" color="secondary">
+          <IonButton slot="end" color="secondary" routerLink="/about">
             <IonIcon icon={information}/>
           </IonButton>
         </IonToolbar>
