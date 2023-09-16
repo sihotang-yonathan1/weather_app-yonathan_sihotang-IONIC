@@ -70,8 +70,8 @@ export function WeatherCard({temp, description, imageUrl, city, units, name}:
                                 units === "standard" 
                                 ? "K" 
                                 : units === "metric"
-                                    ? "C"
-                                    : "F"
+                                    ? "°C"
+                                    : "°F"
                             }</p>
                         </IonText>}
                     </IonCardContent>
