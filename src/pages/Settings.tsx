@@ -64,7 +64,7 @@ const Settings: React.FC = () => {
                   <IonCol>
                     <IonText className='ion-padding-left ion-margin-left'>
                       <p>
-                        Mengganti API dengan tidak benar dapat mengakibatkan 
+                        Mengganti API KEY dengan tidak benar dapat mengakibatkan 
                         aplikasi tidak dapat bekerja dengan baik
                       </p>
                     </IonText>
