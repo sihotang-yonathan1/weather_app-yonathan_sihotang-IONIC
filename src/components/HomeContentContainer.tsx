@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { WeatherCard, WeatherCardError } from "./WeatherCard"
 import { AppConfig } from "../SettingContext"
+import { IonSearchbar } from "@ionic/react"
 
 // TODO: set api as secret
 const apiInfo = {
@@ -41,7 +42,8 @@ async function getCurrentWeather({latitude, longitude, setting}:
 }
 
 
-export default function HomeContentContainer({city, setting}: {city: string | null, setting: SettingType}){
+export default function HomeContentContainer({setting}: {setting: SettingType}){
+    const [city, setSelectedCity] = useState<string | null>('manado')
     const [weatherApiInfo, setWeatherApiInfo] = useState<{
         'city': string | null,
         'latitude': number | null,
@@ -116,6 +118,14 @@ export default function HomeContentContainer({city, setting}: {city: string | nu
 
     return (
         <div>
+            <IonSearchbar 
+                placeholder="Cari kota disini" 
+                onIonInput={
+                e => setSelectedCity(e?.target?.value ?? null)
+                }
+                debounce={500}
+                color="medium"
+            />
             {/* Dummy Data */}
             { weatherApiInfo?.city &&
                 <WeatherCard 

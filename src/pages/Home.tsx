@@ -19,12 +19,7 @@ import { useContext, useEffect, useState } from "react";
 import { AppConfig } from "../SettingContext";
 
 const Home: React.FC = () => {
-  const [selectedCity, setSelectedCity] = useState<string | null>('manado')
   const {setting} = useContext(AppConfig)
-  
-  useEffect( () => {
-    console.log(selectedCity)
-  }, [selectedCity])
 
   useEffect(() => {
     console.log(setting)
@@ -53,16 +48,8 @@ const Home: React.FC = () => {
       <IonContent fullscreen className="ion-padding" color="secondary">
         
         {/* Search Bar */}
-        <IonSearchbar 
-            placeholder="Cari kota disini" 
-            onIonInput={
-              e => setSelectedCity(e?.target?.value ?? null)
-            }
-            debounce={500}
-            color="medium"
-          />
         
-        <HomeContentContainer city={selectedCity} setting={setting}/>
+        <HomeContentContainer setting={setting}/>
       </IonContent>
     </IonPage>
   );
