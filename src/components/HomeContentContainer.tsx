@@ -196,7 +196,7 @@ export default function HomeContentContainer({setting}: {setting: SettingType}){
                     {hourlyWeatherApiInfo.map( weather_data => {
                         if (hourlyWeatherApiInfo.indexOf(weather_data) < 6){
                             return (
-                                <IonCol>
+                                <IonCol key={hourlyWeatherApiInfo.indexOf(weather_data)}>
                                     <WeatherCard 
                                         temp={weather_data?.main.temp}
                                         city={weatherApiInfo?.city}
