@@ -2,6 +2,7 @@ import {
     IonCard, 
     IonCardContent, 
     IonCardHeader, 
+    IonCardSubtitle, 
     IonCardTitle, 
     IonIcon, 
     IonImg, 
@@ -32,7 +33,7 @@ export function WeatherCardError({message}: {message: string}){
     )
 }
 
-export function WeatherCard({temp, description, imageUrl, city, units, name}: 
+export function WeatherCard({temp, description, imageUrl, city, units, name, forecast_date}: 
     {
         temp: number | null, 
         description: string | null, 
@@ -40,15 +41,21 @@ export function WeatherCard({temp, description, imageUrl, city, units, name}:
         city: string | null,
         units: string,
         name: string | null,
+        forecast_date: number | null
     }){
+        const date_string = new Date((forecast_date || 0)* 1000)
         return (
             <div>
-                <IonCard className="ion-margin-top" color="light">
+                <IonCard className="ion-margin-top weather_card_inner_card" color="light">
                     {   city &&
                         <IonCardHeader>
                             <IonCardTitle className="ion-text-capitalize ion-text-center">
                                     {city}
                             </IonCardTitle>
+                            <IonCardSubtitle className="ion-text-center">
+                                <p>{date_string.getHours().toString().padStart(2, "0")}:{date_string.getMinutes().toString().padEnd(2, "0")}</p>
+                                <p>{date_string?.getDate()}/{date_string.getMonth()}/{date_string.getFullYear()}</p>
+                            </IonCardSubtitle>
                         
                         </IonCardHeader>
                     }

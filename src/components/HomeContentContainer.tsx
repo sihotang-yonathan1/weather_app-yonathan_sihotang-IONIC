@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react"
 import { WeatherCard, WeatherCardError } from "./WeatherCard"
 import { AppConfig } from "../SettingContext"
-import { IonSearchbar } from "@ionic/react"
+import { IonCol, IonGrid, IonItem, IonList, IonRow, IonSearchbar, IonText } from "@ionic/react"
+
+import "./HomeContentContainer.css";
 
 // TODO: set api as secret
 const apiInfo = {
@@ -41,9 +43,30 @@ async function getCurrentWeather({latitude, longitude, setting}:
     }
 }
 
+async function getHourlyWeather({latitude, longitude, setting}: 
+    {latitude: number | null, longitude: number | null, setting: SettingType}){
+    
+    let response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${setting.apiKey}`)
+    let response_json = await response.json()
+    return response_json?.list ?? []
+}
+
 
 export default function HomeContentContainer({setting}: {setting: SettingType}){
     const [city, setSelectedCity] = useState<string | null>('manado')
+    const [hourlyWeatherApiInfo, setHourlyWeatherApiInfo] = useState<Array<{
+        'dt': number, // forecasted time
+        'main': {
+            'temp': number,
+        },
+        'weather': Array<{
+            'id': number,
+            'main': string,
+            'description': string,
+            'icon' : string | null
+        }>
+    }>>([])
+
     const [weatherApiInfo, setWeatherApiInfo] = useState<{
         'city': string | null,
         'latitude': number | null,
@@ -54,7 +77,8 @@ export default function HomeContentContainer({setting}: {setting: SettingType}){
             'main': string | null,
             'description': string | null,
             'icon': string | null
-        }
+        },
+        'forecast_date': number | null
 
     }>({
         'city': null,
@@ -66,7 +90,8 @@ export default function HomeContentContainer({setting}: {setting: SettingType}){
             'main': null,
             'description': null,
             'icon': null
-        }
+        },
+        'forecast_date': null
     })
 
     async function dataFetching({city}: {city: string | null}){
@@ -81,8 +106,19 @@ export default function HomeContentContainer({setting}: {setting: SettingType}){
             'latitude': city_location?.[0]?.lat,
             'longitude': city_location?.[0]?.lon,
             'temp': weather_info_data?.main?.temp,
-            'weather': weather_info_data?.weather?.[0]
+            'weather': weather_info_data?.weather?.[0],
+            'forecast_date': weather_info_data?.dt
         }
+    }
+
+    async function hourlyDataFetching({city}: {city: string | null}){
+        const city_location = await getCityPosition({city: city, setting: setting})
+        const forecast_data_list = await getHourlyWeather({
+            latitude: city_location?.[0]?.lat,
+            longitude: city_location?.[0]?.lon,
+            setting: setting
+        })
+        return forecast_data_list
     }
 
     useEffect(() => {
@@ -91,6 +127,11 @@ export default function HomeContentContainer({setting}: {setting: SettingType}){
         .then(res => {
             setWeatherApiInfo(res)
         })
+
+        hourlyDataFetching({city: city})
+            .then( res => {
+                setHourlyWeatherApiInfo(res)
+            })
     }, [city, setting])
 
     useEffect(() => {
@@ -135,6 +176,7 @@ export default function HomeContentContainer({setting}: {setting: SettingType}){
                     city={weatherApiInfo?.city} 
                     units={setting.metric}
                     name={weatherApiInfo?.weather?.main}
+                    forecast_date={weatherApiInfo?.forecast_date}
                 />
             }
             {
@@ -144,6 +186,32 @@ export default function HomeContentContainer({setting}: {setting: SettingType}){
                     />
                     
             }
+            <IonGrid>
+                <IonRow>
+                    <IonText color="dark light">
+                        <h3>Prediksi Cuaca</h3>
+                    </IonText>
+                </IonRow>
+                <IonRow className="forecast_hourly_container">
+                    {hourlyWeatherApiInfo.map( weather_data => {
+                        if (hourlyWeatherApiInfo.indexOf(weather_data) < 6){
+                            return (
+                                <IonCol>
+                                    <WeatherCard 
+                                        temp={weather_data?.main.temp}
+                                        city={weatherApiInfo?.city}
+                                        description={weatherApiInfo?.weather?.description}
+                                        units={setting?.metric}
+                                        name={weather_data?.weather?.[0]?.main}
+                                        imageUrl={weather_data?.weather?.[0]?.icon}
+                                        forecast_date={weather_data?.dt}
+                                    />
+                                </IonCol>
+                            )
+                        }
+                    })}
+                </IonRow>
+            </IonGrid>
         </div>
     )
 }
