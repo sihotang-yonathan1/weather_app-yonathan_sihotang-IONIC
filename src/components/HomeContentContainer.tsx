@@ -46,7 +46,7 @@ async function getCurrentWeather({latitude, longitude, setting}:
 async function getHourlyWeather({latitude, longitude, setting}: 
     {latitude: number | null, longitude: number | null, setting: SettingType}){
     
-    let response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${setting.apiKey}`)
+    let response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=${setting.metric}&appid=${setting.apiKey}`)
     let response_json = await response.json()
     return response_json?.list ?? []
 }
