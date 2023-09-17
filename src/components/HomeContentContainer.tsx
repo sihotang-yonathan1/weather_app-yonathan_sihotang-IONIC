@@ -194,21 +194,19 @@ export default function HomeContentContainer({setting}: {setting: SettingType}){
                 </IonRow>
                 <IonRow className="forecast_hourly_container">
                     {hourlyWeatherApiInfo.map( weather_data => {
-                        if (hourlyWeatherApiInfo.indexOf(weather_data) < 6){
-                            return (
-                                <IonCol key={hourlyWeatherApiInfo.indexOf(weather_data)}>
-                                    <WeatherCard 
-                                        temp={weather_data?.main.temp}
-                                        city={weatherApiInfo?.city}
-                                        description={weatherApiInfo?.weather?.description}
-                                        units={setting?.metric}
-                                        name={weather_data?.weather?.[0]?.main}
-                                        imageUrl={weather_data?.weather?.[0]?.icon}
-                                        forecast_date={weather_data?.dt}
-                                    />
-                                </IonCol>
-                            )
-                        }
+                        return (
+                            <IonCol key={hourlyWeatherApiInfo.indexOf(weather_data)}>
+                                <WeatherCard 
+                                    temp={weather_data?.main.temp}
+                                    city={weatherApiInfo?.city}
+                                    description={weatherApiInfo?.weather?.description}
+                                    units={setting?.metric}
+                                    name={weather_data?.weather?.[0]?.main}
+                                    imageUrl={weather_data?.weather?.[0]?.icon}
+                                    forecast_date={weather_data?.dt}
+                                />
+                            </IonCol>
+                        )
                     })}
                 </IonRow>
             </IonGrid>
