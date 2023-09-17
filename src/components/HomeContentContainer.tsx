@@ -187,11 +187,13 @@ export default function HomeContentContainer({setting}: {setting: SettingType}){
                     
             }
             <IonGrid>
-                <IonRow>
-                    <IonText color="dark light">
-                        <h3>Prediksi Cuaca</h3>
-                    </IonText>
-                </IonRow>
+                {   weatherApiInfo?.city !== undefined &&
+                    <IonRow>
+                        <IonText color="dark light">
+                            <h3>Prediksi Cuaca</h3>
+                        </IonText>
+                    </IonRow>
+                }
                 <IonRow className="forecast_hourly_container">
                     {hourlyWeatherApiInfo.map( weather_data => {
                         return (
