@@ -2,8 +2,8 @@
 Aplikasi ini bertujuan untuk menampilkan cuaca pada lokasi yang dipilih. Aplikasi ini menggunakan api dari open weather (https://openweathermap.org/api).
 
 ## Cara Download
-Aplikasi ini dapat didownload pada link berikut
-``
+Aplikasi ini dapat didownload pada link [ini](https://drive.google.com/drive/folders/1spHZotLzzlp21TcZYd6HklY7LMgxHVWY?usp=sharing) atau   
+`https://drive.google.com/drive/folders/1spHZotLzzlp21TcZYd6HklY7LMgxHVWY?usp=sharing`
 
 ## Fitur
 Aplikasi ini memiliki beberapa fitur yakni:
