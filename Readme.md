@@ -3,7 +3,7 @@ Aplikasi ini bertujuan untuk menampilkan cuaca pada lokasi yang dipilih. Aplikas
 
 ## Cara Download
 Aplikasi ini dapat didownload pada link [ini](https://drive.google.com/drive/folders/1spHZotLzzlp21TcZYd6HklY7LMgxHVWY?usp=sharing) atau   
-`https://drive.google.com/drive/folders/1spHZotLzzlp21TcZYd6HklY7LMgxHVWY?usp=sharing`
+`https://drive.google.com/drive/folders/1spHZotLzzlp21TcZYd6HklY7LMgxHVWY?usp=sharing` dan kemudian download file yang bernama `apk-release.apk`
 
 ## Fitur
 Aplikasi ini memiliki beberapa fitur yakni:
