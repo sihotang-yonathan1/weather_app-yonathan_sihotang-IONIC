@@ -15,3 +15,4 @@ Aplikasi ini memiliki beberapa fitur yakni:
 Untuk penggunaan aplikasi ini cukup mengetikan nama lokasi di search bar bagian atas, hasil pencarian akan ditampilkan di bawah
 
 ## Demo Program
+![Demo_program](https://github.com/sihotang-yonathan1/weather_app-yonathan_sihotang-IONIC/blob/main/assets/demo_program.gif)
